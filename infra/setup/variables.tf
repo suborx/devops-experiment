@@ -1,10 +1,10 @@
-variable "tr_state_bucket" {
+variable "tf_state_bucket" {
   description = "S3 bucket for Terraform state"
   type        = string
   default     = "devops-experiment-app-tf-state"
 }
 
-variable "tr_state_lock_table" {
+variable "tf_state_lock_table" {
   description = "DynamoDB table for Terraform state locking"
   type        = string
   default     = "devops-experiment-app-api-tf-lock"
