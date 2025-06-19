@@ -13,7 +13,7 @@ data "aws_iam_policy_document" "tf_backend" {
   statement {
     effect    = "Allow"
     actions   = ["s3:ListBucket"]
-    resources = ["arn:aws:s3:::${var.tr_state_bucket}"]
+    resources = ["arn:aws:s3:::${var.tf_state_bucket}"]
   }
   statement {
     effect = "Allow"
@@ -23,8 +23,8 @@ data "aws_iam_policy_document" "tf_backend" {
       "s3:DeleteObject",
     ]
     resources = [
-      "arn:aws:s3:::${var.tr_state_bucket}/tf-state-deploy/*",
-      "arn:aws:s3:::${var.tr_state_bucket}/tf-state-deploy-env/*",
+      "arn:aws:s3:::${var.tf_state_bucket}/tf-state-deploy/*",
+      "arn:aws:s3:::${var.tf_state_bucket}/tf-state-deploy-env/*",
     ]
   }
   statement {
@@ -35,7 +35,7 @@ data "aws_iam_policy_document" "tf_backend" {
       "dynamodb:PutItem",
       "dynamodb:DeleteItem",
     ]
-    resources = ["arn:aws:dynamodb:*:*:table/${var.tr_state_lock_table}"]
+    resources = ["arn:aws:dynamodb:*:*:table/${var.tf_state_lock_table}"]
   }
 }
 

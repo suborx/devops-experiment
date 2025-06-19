@@ -8,7 +8,7 @@ terraform {
   backend "s3" {
     bucket               = "devops-experiment-app-tf-state"
     key                  = "tf-state-deploy"
-    workspace_key_prefix = "tr-state-deploy-env"
+    workspace_key_prefix = "tf-state-deploy-env"
     region               = "eu-central-1"
     encrypt              = true
     dynamodb_table       = "devops-experiment-app-api-tf-lock"
@@ -22,8 +22,8 @@ provider "aws" {
     tags = {
       Environment = terraform.workspace
       Project     = var.project
-      contact     = var.contact
-      ManagedBy   = "Terraform/deploy"
+      Contact     = var.contact
+      ManageBy   = "Terraform/deploy"
     }
   }
 }
