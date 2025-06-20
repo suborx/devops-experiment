@@ -155,7 +155,7 @@ resource "aws_vpc_endpoint" "dkr" {
 
 resource "aws_vpc_endpoint" "cloudwatch_logs" {
   vpc_id              = aws_vpc.main.id
-  service_name        = "com.amazonaws.${data.aws_region.current.name}.ecr.logs"
+  service_name        = "com.amazonaws.${data.aws_region.current.name}.logs"
   vpc_endpoint_type   = "Interface"
   private_dns_enabled = true
   subnet_ids          = [aws_subnet.private_a.id, aws_subnet.private_b.id]
