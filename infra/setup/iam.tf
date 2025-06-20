@@ -111,6 +111,7 @@ data "aws_iam_policy_document" "ec2" {
       "ec2:DescribeInternetGateways",
       "ec2:DeleteInternetGateway",
       "ec2:DetachNetworkInterface",
+      "ec2:DescribeAvailabilityZones",
       "ec2:DescribeVpcEndpoints",
       "ec2:DescribeRouteTables",
       "ec2:DeleteRouteTable",
