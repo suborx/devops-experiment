@@ -3,17 +3,20 @@
 ######
 
 resource "aws_db_subnet_group" "main" {
-  name       = "${var.prefix}-main"
-  subnet_ids = [aws_subnet.private_a.id, aws_subnet.private_b.id]
+  name       = "${local.prefix}-main"
+  subnet_ids = [
+    aws_subnet.private_a.id,
+    aws_subnet.private_b.id
+  ]
 
   tags = {
-    Name = "${var.prefix}-db-subnet-group"
+    Name = "${local.prefix}-db-subnet-group"
   }
 }
 
 resource "aws_security_group" "rds" {
   description = "Allow access to the RDS db instance"
-  name        = "${var.prefix}-rds-inbound-access"
+  name        = "${local.prefix}-rds-inbound-access"
   vpc_id      = aws_vpc.main.id
 
   ingress {
@@ -23,12 +26,12 @@ resource "aws_security_group" "rds" {
   }
 
   tags = {
-    Name = "${var.prefix}-db-security-group"
+    Name = "${local.prefix}-db-security-group"
   }
 }
 
 resource "aws_db_instance" "main" {
-  identifier                 = "${var.prefix}-db"
+  identifier                 = "${local.prefix}-db"
   db_name                    = "recipe"
   allocated_storage          = 20
   storage_type               = "gp2"
@@ -45,7 +48,7 @@ resource "aws_db_instance" "main" {
   vpc_security_group_ids     = [aws_security_group.rds.id]
 
   tags = {
-    Name = "${var.prefix}-main"
+    Name = "${local.prefix}-main"
   }
 
 }
