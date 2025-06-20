@@ -19,7 +19,7 @@ variable "contact" {
 variable "db_username" {
   description = "Database username for devops-experiment-app-api"
   type        = string
-  default     = "devops-experiment"
+  default     = "devopsExperiment"
 }
 
 variable "db_password" {
