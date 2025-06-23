@@ -78,7 +78,7 @@ resource "aws_ecs_task_definition" "api" {
           value = aws_db_instance.main.username
         },
         {
-          name  = "DB_PASSWORD"
+          name  = "DB_PASS"
           value = aws_db_instance.main.password
         },
         {
@@ -161,14 +161,15 @@ resource "aws_security_group" "ecs_service" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  #REDS connectivity
+  #RDS connectivity
   egress {
     from_port   = 5432
     to_port     = 5432
     protocol    = "tcp"
     cidr_blocks = [aws_subnet.private_a.cidr_block, aws_subnet.private_b.cidr_block]
   }
-  # HTTP Inbound access from ALB
+
+  # HTTP Inbound access
   ingress {
     from_port   = 8000
     to_port     = 8000
