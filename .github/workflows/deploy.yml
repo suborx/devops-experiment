@@ -42,7 +42,8 @@ jobs:
           TF_VAR_ecr_app_image: "${{ vars.ECR_REPO_APP }}:$GITHUB_SHA"
           TF_VAR_ecr_proxy_image: "${{ vars.ECR_REPO_PROXY }}:$GITHUB_SHA"
         run: |
-          printenv | sort/
+          echo "APP-IMAGE: $TF_VAR_ecr_app_image"
+          echo "PROXY-IMAGE: $TF_VAR_ecr_proxy_image"
           cd infra/
           docker compose run --rm terraform -chdir=deploy/ init
           docker compose run --rm terraform -chdir=deploy/ workspace select -or-create $ENVIRONMENT
