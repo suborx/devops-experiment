@@ -63,7 +63,7 @@ resource "aws_ecs_task_definition" "api" {
       environment = [
         {
           name  = "DJANGO_SECRET_KEY"
-          value = "${var.django_secret_key}"
+          value = var.django_secret_key
         },
         {
           name  = "DB_HOST"
