@@ -26,3 +26,8 @@ variable "db_password" {
   description = "Database password for devops-experiment-app-api"
   type        = string
 }
+
+variable "ecr_proxy_image" {
+  description = "Path to the ECR repo with the proxy image"
+  type        = string
+}
