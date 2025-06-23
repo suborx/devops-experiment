@@ -30,12 +30,6 @@ resource "aws_security_group" "rds" {
   }
 }
 
-resource "null_resource" "debug" {
-  provisioner "local-exec" {
-    command = "echo DB_PASSWORD=${var.db_password} DB_USERNAME=${var.db_username}"
-  }
-}
-
 resource "aws_db_instance" "main" {
   identifier                 = "${local.prefix}-db"
   db_name                    = "recipe"
