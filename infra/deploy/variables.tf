@@ -41,3 +41,20 @@ variable "django_secret_key" {
   description = "Django secret key for the application"
   type        = string
 }
+
+variable "dns_zone_name" {
+  description = "Domain name for the application"
+  type        = string
+  default     = "marochnic.net"
+}
+
+variable "subdomain" {
+  description = "Subdomain for each environment"
+  default = {
+    prod    = "api",
+    staging = "api.staging",
+    dev     = "api.dev"
+  }
+  type = map(string)
+
+}
